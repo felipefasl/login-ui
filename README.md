@@ -5,9 +5,9 @@ Frontend sistema de login genérico desenvolvido em [Angular v10](https://angula
 ## Primeng
 [Documentação](https://www.primefaces.org/primeng/showcase/#/)
 
-## Validação Captcha - Primeng
-[Documentação](https://www.primefaces.org/primeng/showcase/#/captcha)
-
+## Validação Captcha - Primeng/Google
+[Documentação Primeng](https://www.primefaces.org/primeng/showcase/#/captcha)
+[Fonte estudo](https://w3path.com/how-to-integrate-recaptcha-in-angular-8)
 ## Login Google - angularx-social-login
 [Documentação](https://www.npmjs.com/package/angularx-social-login)
 
@@ -18,6 +18,6 @@ Frontend sistema de login genérico desenvolvido em [Angular v10](https://angula
  [Fonte estudo](https://aws.amazon.com/pt/mobile/AWS-Amplify-landing-angular/)
 
 ## Exemplo Execução 
- [Link](https://main.d1hy8lvuqymmbz.amplifyapp.com/)
+ [Link](https://main.d1hy8lvuqymmbz.amplifyapp.com/login)
 
  [Backend](https://nestjs-login-api.herokuapp.com/api-docs)
