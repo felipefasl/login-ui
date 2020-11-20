@@ -1,0 +1,73 @@
+<div class="background-degrade p-pt-md-6 p-pt-3" >
+
+  <div class="p-text-center">
+    <img class="size-img" src="assets/layout/images/login-logo.png" /><br />
+  </div>
+  <div class="p-fluid p-md-6 p-md-offset-3 p-pt-0 p-mt-0">
+
+    <p-card class="p-col-12">
+      <h2 class="p-text-center">Cadastre-se gratuitamente</h2>
+      <form [formGroup]='formulario' (ngSubmit)="cadastrarUsuario()">
+        <app-mensageria [fixa]="true" [processamento]="processamento" [(mensagens)]="mensagens" [animacao]="animacao"></app-mensageria>
+        <div class="p-grid p-fluid p-px-md-6 p-pb-md-1">
+          <div class="p-col-12 p-text-left">
+            <label>Nome</label>
+            <input type="text" class="p-text-capitalize" autocomplete="off" pInputText formControlName="nome" #autoFocusNome
+              [ngStyle]="definirStatusCampo(form.nome, 'ngStyle')" />
+            <mensagem-campo [campo]="form.nome"></mensagem-campo>
+          </div>
+
+          <div class="p-md-6 p-col-12">
+            <label>E-mail</label>
+            <input type="text" autocomplete="off" pInputText formControlName="email"
+              [ngStyle]="definirStatusCampo(form.email, 'ngStyle')" />
+            <mensagem-campo [campo]="form.email"></mensagem-campo>
+          </div>
+
+          <div class="p-md-6 p-col-12">
+            <label>Telefone</label>
+            <input type="text" autocomplete="off" pInputText formControlName="telefone" #autofocus
+              [ngStyle]="definirStatusCampo(form.telefone, 'ngStyle')" minlength="14" maxlength="15" telefone #autoFocusTelefone />
+            <mensagem-campo [campo]="form.telefone"></mensagem-campo>
+          </div>
+
+          <div class="p-md-6 p-col-12">
+            <label>Senha</label>
+            <input type="password" pPassword autocomplete="off" pInputText formControlName="senha"
+              promptLabel="Informe a senha" weakLabel="Fraca" mediumLabel="Médio" strongLabel="Forte"
+              [ngStyle]="definirStatusCampo(form.senha, 'ngStyle')" />
+            <mensagem-campo [campo]="form.senha"></mensagem-campo>
+          </div>
+
+          <div class="p-md-6 p-col-12">
+            <label>Confirmar Senha</label>
+            <input type="password" autocomplete="off" pInputText formControlName="confirmacaoSenha"
+              [ngStyle]="styleConfirmacaoSenha" (input)="tratarConfirmacaoSenha()" />
+            <mensagem-campo [campo]="form.confirmacaoSenha"></mensagem-campo>
+            <small id="username-help" class="p-invalid" *ngIf="erroConfirmacaoSenha">
+              As senhas informadas são diferentes.
+            </small>
+          </div>
+
+          <div class="p-col-12">
+            <p-captcha siteKey="{{sitekey}}" (onResponse)="validarCaptcha()"></p-captcha>
+          </div>
+
+          <div class="p-col-12 p-mt-4">
+            <button pButton pRipple type="submit" label="Cadastrar" icon="pi pi-check"
+              class="p-button-raised p-button-success" [disabled]="!captchaValidado"></button>
+          </div>
+
+          <div class="p-col-12 p-text-center p-px-0 p-pt-4">
+            Já possui cadastro? <a [routerLink]="['/login']" style="cursor: pointer;">Realize o login</a>
+          </div>
+
+        </div>
+      </form>
+      <div class="p-col-12 p-text-center p-pt-4">
+        <a [routerLink]="['/']" style="cursor: pointer;">Voltar para página inicial</a>
+      </div>
+    </p-card>
+  </div>
+
+</div>

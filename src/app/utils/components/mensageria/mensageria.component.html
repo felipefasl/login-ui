@@ -1,0 +1,8 @@
+<p-toast [ngClass]="{'p-d-none': !flutuante}"></p-toast>
+<p-messages [ngClass]="{'p-d-none': !fixa}" [(value)]="mensagens" [showTransitionOptions]="animacao?'300ms':'0ms'" [hideTransitionOptions]="animacao?'200ms':'0ms'"></p-messages>
+
+<p-dialog [(visible)]="processamento" modal="true" [closable]="false" [showHeader]="false" minHeight='50px'>
+  <div class="p-text-center">
+    <p-progressSpinner [style]="{width: '40px', height: '40px'}" strokeWidth="3"></p-progressSpinner>Aguarde...
+  </div>
+</p-dialog>

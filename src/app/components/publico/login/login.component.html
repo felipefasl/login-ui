@@ -1,0 +1,87 @@
+<div class="background-degrade p-text-center p-pt-md-6 p-pt-3">
+
+  <img class="size-img" src="assets/layout/images/login-logo.png" alt="omega-layout" /><br />
+
+  <div class="p-fluid p-md-4 p-md-offset-4">
+
+    <p-card class="p-col-12">
+
+      <h2>Acesse sua Conta</h2>
+      <app-mensageria [fixa]="true" [processamento]="processamento"></app-mensageria>
+      <form [formGroup]='formulario' (submit)="realizarLogin()">
+
+        <div class="p-grid p-fluid p-p-md-5">
+
+          <div class="p-col-12">
+            <input type="text" autocomplete="off" pInputText placeholder="E-mail" formControlName="email" #autofocusEmail
+              [ngStyle]="definirStatusCampo(form.email, 'ngStyle')" />
+          </div>
+          <div class="p-col-12">
+            <input type="password" autocomplete="off" pInputText placeholder="Senha" formControlName="senha"
+              [ngStyle]="definirStatusCampo(form.senha, 'ngStyle')" #autofocusSenha />
+          </div>
+
+          <div class="p-col-12 p-pb-0">
+            <button pButton pRipple type="submit" label="Entrar" icon="pi pi-sign-in"
+              class="p-button-raised p-button-primary"></button>
+          </div>
+          <div class="p-col-12 p-text-right p-pt-1">
+            <a (click)="redefinirSenha()" style="cursor: pointer;">Esqueceu sua senha?</a>
+          </div>
+
+          <div class="p-col-5">
+            <hr />
+          </div>
+          <div class="p-col">
+            OU
+          </div>
+          <div class="p-col-5">
+            <hr />
+          </div>
+
+          <div class="p-col-12 p-py-0">
+            <button pButton pRipple type="button" label="Entrar com o Google" icon="pi pi-google"
+              class="p-button-raised p-button-secondary" (click)="realizarLoginGoogle()"></button>
+          </div>
+
+          <!-- <div class="p-col-12">
+            <button pButton pRipple type="button" label="Entrar com o Facebook" icon="pi pi-facebook"
+              class="p-button-raised p-button-secondary" (click)="realizarLoginGoogle()"></button>
+          </div> -->
+
+          <div class="p-col-12 p-text-center p-px-0 p-pt-4">
+            Novo na Plataforma? <a [routerLink]="['/cadastro-usuario']" style="cursor: pointer;">Cadastre-se</a>
+          </div>
+
+        </div>
+        <div class="p-col-12">
+          <a [routerLink]="['/']" style="cursor: pointer;">Voltar para página inicial</a>
+        </div>
+      </form>
+
+    </p-card>
+  </div>
+
+</div>
+
+<p-dialog header="Redefinir Senha" [modal]="true" [(visible)]="redefinicaoSenhaVisivel"
+  (onHide)="redefinicaoSenhaPermitida = false">
+
+  <form [formGroup]='formularioRedefinicaoSenha' (submit)="enviarEmailLinkRedefinicao()">
+    <div class="p-grid p-fluid">
+      <div class="p-col-12">
+        <input type="text" autocomplete="off" pInputText placeholder="Informe o email" formControlName="email"
+          [ngStyle]="definirStatusCampo(formRedefinicaoSenha.email, 'ngStyle')" />
+          <small id="username-help" class="p-invalid p-pb-0"
+          *ngIf="formRedefinicaoSenha.email.errors && formRedefinicaoSenha.email.dirty?formRedefinicaoSenha.email.errors.required:false">Preenchimento obrigatório.</small>
+      </div>
+
+      <div class="p-col-12">
+        <p-captcha siteKey="{{sitekey}}" (onResponse)="permitirRedifinicao()"></p-captcha>
+      </div>
+      <div class="p-col-12" *ngIf="redefinicaoSenhaPermitida">
+        <p-button type="submit" label="Redefinir" icon="pi pi-user"></p-button>
+      </div>
+    </div>
+  </form>
+</p-dialog>

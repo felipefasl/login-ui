@@ -1,0 +1,84 @@
+<div class="background-degrade p-text-center p-pt-md-6 p-pt-3">
+
+  <img class="size-img" src="assets/layout/images/login-logo.png" alt="omega-layout" /><br />
+
+  <div class="p-fluid p-md-4 p-md-offset-4">
+
+    <p-card class="p-col-12">
+
+      <h2>Redefinição de Senha</h2>
+      <h4>{{usuario?.nome}}</h4>
+      <app-mensageria [fixa]="true" [processamento]="processamento" [animacao]="animacao" [(mensagens)]="mensagens"></app-mensageria>
+      <form [formGroup]='formulario' (ngSubmit)="redefinirSenha()">
+        <div class="p-grid p-fluid p-px-md-6 p-pb-md-1">
+
+          <div class="p-col-12">
+            <input type="password" autocomplete="off" pInputText placeholder="Senha" formControlName="senha"
+              [ngStyle]="definirStatusCampo(form.senha, 'ngStyle')" #autofocus />
+            <mensagem-campo [campo]="form.senha"></mensagem-campo>
+          </div>
+
+          <div class="p-col-12">
+            <input type="password" autocomplete="off" pInputText placeholder="Confirmar Senha"
+              formControlName="confirmacaoSenha" [ngStyle]="styleConfirmacaoSenha" (input)="tratarConfirmacaoSenha()" />
+            <mensagem-campo [campo]="form.confirmacaoSenha"></mensagem-campo>
+            <small id="username-help" class="p-invalid" *ngIf="erroConfirmacaoSenha">
+              As senhas informadas não são iguais.
+            </small>
+          </div>
+
+          <div class="p-col-12 p-pb-0">
+            <button pButton pRipple type="submit" label="Confirmar" icon="pi pi-check"
+              class="p-button-raised p-button-success"></button>
+          </div>
+          <div class="p-col-12 p-text-center p-px-0 p-pt-4">
+            Lembrou sua senha? <a [routerLink]="['/login']" style="cursor: pointer;">Realize o login</a>
+          </div>
+        </div>
+      </form>
+      <div class="p-col-12 p-text-center p-pt-4">
+        <a [routerLink]="['/']" style="cursor: pointer;">Ir para página inicial</a>
+      </div>
+    </p-card>
+  </div>
+</div>
+
+
+
+
+<!--  <div id="login-wrapper">
+    <img src="assets/layout/images/login-logo.png" alt="omega-layout" />
+
+    <div id="login-container" style="height: 25rem;">
+      <span class="title" style="color: grey;">Redefinição de Senha</span>
+
+      <h5>{{usuario?.nome}}</h5>
+      <form [formGroup]='formulario' (ngSubmit)="cadastrarUsuario()">
+
+        <div class="p-grid p-fluid">
+
+          <div class="p-col-12">
+            <input type="password" pPassword autocomplete="off" pInputText placeholder="Senha" formControlName="senha"
+              promptLabel="Informe a senha" weakLabel="Fraca" mediumLabel="Médio" strongLabel="Forte"
+              [ngStyle]="definirStatusCampo(form.senha, 'ngStyle')" />
+            <mensagem-campo [campo]="form.senha"></mensagem-campo>
+          </div>
+
+          <div class="p-col-12">
+            <input type="password" autocomplete="off" pInputText placeholder="Confirmar Senha"
+              formControlName="confirmacaoSenha" [ngStyle]="styleConfirmacaoSenha" (input)="tratarConfirmacaoSenha()"/>
+            <mensagem-campo [campo]="form.confirmacaoSenha"></mensagem-campo>
+            <small id="username-help" class="p-invalid" *ngIf="erroConfirmacaoSenha">
+              As senhas informadas não são iguais.
+            </small>
+          </div>
+
+          <div class="p-col-12 p-pb-0">
+            <button pButton pRipple type="submit" label="Confirmar" icon="pi pi-check"
+              class="p-button-raised p-button-success"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>-->

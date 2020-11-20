@@ -1,0 +1,15 @@
+<div class="p-fluid p-text-left">
+
+  <small id="username-help" class="p-invalid p-text-left"
+    *ngIf="campo.errors && campo.dirty?campo.errors.email:false">Informe um email válido.</small>
+  <small id="username-help" class="p-invalid p-text-left"
+    *ngIf="campo.errors && campo.dirty?campo.errors.telefone:false">Informe um telefone válido.</small>
+  <small id="username-help" class="p-invalid p-pb-0"
+    *ngIf="campo.errors && campo.dirty?campo.errors.required:false">Preenchimento obrigatório.</small>
+
+
+  <small class="text-muted " *ngIf="debug">
+    invalid: {{campo?.invalid}} - dirty: {{campo?.dirty}} - touched: {{campo?.touched}} - errors:
+    {{json(campo?.errors)}}
+  </small>
+</div>
