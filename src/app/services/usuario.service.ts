@@ -14,17 +14,22 @@ export class UsuarioService {
 
   cadastrar(requisicao: IUsuario): Observable<IUsuario> {
 
-    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/cadastro', requisicao);
+    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase, requisicao);
   }
 
   validarEmail(requisicao: { hash: string }): Observable<IUsuario> {
 
-    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/validacao-email', requisicao);
+    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/email', requisicao);
   }
 
   solicitarRedefinicaoSenha(requisicao: { email: string }): Observable<IUsuario> {
 
-    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/link-redefinicao-senha', requisicao);
+    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/link-senha', requisicao);
+  }
+
+  redefinirSenha(requisicao: { hash: string, senha: string }): Observable<void> {
+
+    return UtilsStaticService.executarPUT(this.httpClient, this.endpointBase + '/hash-senha', requisicao);
   }
 
   consultarPorHashSenha(hash: string): Observable<IUsuario> {
@@ -34,16 +39,11 @@ export class UsuarioService {
       tipo: 'senha'
     };
 
-    return UtilsStaticService.executarGET(this.httpClient, this.endpointBase + '/hash-redefinicao-senha', requisicao);
+    return UtilsStaticService.executarGET(this.httpClient, this.endpointBase + '/hash-senha', requisicao);
   }
 
   consultarPorEmail(requisicao: { email: string }): Observable<IUsuario> {
 
     return UtilsStaticService.executarGET(this.httpClient, this.endpointBase + '/email', requisicao);
-  }
-
-  redefinirSenha(requisicao: { hash: string, senha: string }): Observable<void> {
-
-    return UtilsStaticService.executarPOST(this.httpClient, this.endpointBase + '/atualizacao-senha-hash', requisicao);
   }
 }

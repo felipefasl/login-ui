@@ -11,14 +11,6 @@ export class UtilsStaticService {
     return httpClient.get<any>(endpoint, { params: UtilsStaticService.preencherHttpParams(requisicao) });
   }
 
-  static executarGETPromise(
-    httpClient: HttpClient,
-    endpoint: string,
-    requisicao: any = {}): Promise<any> {
-
-    return httpClient.get<any>(endpoint, { params: UtilsStaticService.preencherHttpParams(requisicao) }).toPromise();
-  }
-
   static executarPOST(
     httpClient: HttpClient,
     endpoint: string,
@@ -27,12 +19,12 @@ export class UtilsStaticService {
     return httpClient.post<any>(endpoint, requisicao);
   }
 
-  static executarPOSTPromise(
+  static executarPUT(
     httpClient: HttpClient,
     endpoint: string,
-    requisicao: any = {}): Promise<any> {
+    requisicao: any = {}): Observable<any> {
 
-    return httpClient.post<any>(endpoint, requisicao).toPromise();
+    return httpClient.put<any>(endpoint, requisicao);
   }
 
   static executarPATCH(
@@ -41,14 +33,6 @@ export class UtilsStaticService {
     requisicao: any = {}): Observable<any> {
 
       return httpClient.patch<any>(endpoint, { params: UtilsStaticService.preencherHttpParams(requisicao) });
-  }
-
-  static executarPATCHPromise(
-    httpClient: HttpClient,
-    endpoint: string,
-    requisicao: any = {}): Promise<any> {
-
-      return httpClient.patch<any>(endpoint, { params: UtilsStaticService.preencherHttpParams(requisicao) }).toPromise();
   }
 
   /**
